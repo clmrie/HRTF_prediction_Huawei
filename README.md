@@ -44,9 +44,12 @@ Trained on the [SONICOM dataset](https://www.sonicom.eu/tools-and-resources/hrtf
 
 Mean Spectral Distortion weights each frequency bin inversely to the **auditory critical bandwidth** [1], and scores only elevations within ±30°:
 
-```math
-\mathrm{MSD} = 10 \log_{10} \big( \mathbb{E}\big[ ( w_k \, ( |H| - |\hat{H}| ) )^2 \big] \big) \ \text{dB}
-```
+<!-- MSD = 10 \log_{10} \big( \mathbb{E}\big[ ( w_k \, ( |H| - |\hat{H}| ) )^2 \big] \big) \ \text{dB}
+     Typeset with LaTeX and vectorised to assets/eq_msd.svg so it renders everywhere,
+     not only where GitHub's client-side math runs. -->
+<p align="center">
+  <img src="assets/eq_msd.svg" width="56%" alt="MSD equals 10 log base 10 of the expectation of the squared critical-band-weighted difference between measured and predicted magnitude, in decibels."/>
+</p>
 
 Worth naming plainly: that weighting puts **≈74% of its mass below 5 kHz** and only **≈13%** in the 5–10 kHz band where the elevation-defining pinna notches actually live. A model trained on this metric is optimized *least* where the perceptual motivation is strongest. A notch-aware objective is the obvious follow-up.
 
